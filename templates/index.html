@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Insurance Cost Prediction</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Medical Insurance Cost Prediction</h1>
+    <form id="insuranceForm" method="post" action="/predict">
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="children">Children</label>
+        <input type="number" id="children" name="children" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="sex">Gender</label>
+        <select id="sex" name="sex" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="region">Region</label>
+        <select id="region" name="region" required>
+          <option value="northeast">northeast</option>
+          <option value="northwest">northwest</option>
+          <option value="southeast">southeast</option>
+          <option value="southwest">southwest</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="bmi">BMI</label>
+        <input type="number" id="bmi" name="bmi" step="0.1" required>
+      </div>
+      <div class="form-group">
+        <label for="smoker">Smoke</label>
+        <select id="smoker" name="smoker" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <button type="submit">Predict Insurance Cost</button>
+    </form>
+    <div class="result">
+      <h2>Predicted Insurance Cost:</h2>
+      <p id="insuranceCost">{{ result }}</p>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
